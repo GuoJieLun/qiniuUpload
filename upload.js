@@ -31,7 +31,7 @@ const putExtra = new qiniu.form_up.PutExtra();
 
 /**
  * 资源管理相关的操作首先要构建对象
- * （bucketManager 应该是获取操作权限的） PS：纯属个人克烈
+ * （bucketManager 应该是获取操作权限的） PS：纯属个人理解
  * @type {rs.BucketManager|*|BucketManager}
  */
 const bucketManager = new qiniu.rs.BucketManager(mac, config);
