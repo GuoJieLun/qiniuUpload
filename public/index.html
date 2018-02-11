@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form id='myupload' action="#"  method='post' enctype='multipart/form-data'>
+    <div class="demo">
+        <div class="btn">
+            <span>添加附件</span>
+            <input id="fileupload" type="file" name="file1">
+        </div>
+        <!-- 显示已上传的文件名 -->
+        <div class="files"></div>
+        <!-- 显示已上传的图片-->
+        <div class="showimg"></div>
+    </div>
+    <input type="button" id="submitForm" value="提交" />
+</form>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+
+
+    $(document).ready(function(){
+
+
+        $("#submitForm").on("click",function(event){
+
+           let data =  $('#fileupload').prop('files');
+            var formData = new FormData();
+            formData.append('image',data[0]);
+            axios({
+                url:'/upload',
+                method: 'POST' ,
+                data: formData,
+                headers:{'Content-Type':'multipart/form-data;charset=utf-8;'}
+            }).then((res) => {
+               console.log(res);
+            }).catch(function (error) {
+
+                console.log(error);
+            });
+
+
+        })
+    })
+</script>
